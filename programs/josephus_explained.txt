@@ -1,0 +1,15 @@
+t = node with 1
+t.next = self
+x = first item
+
+1-> 1 -> 1
+1->h
+x = h = 2
+1-> 2 -> 1
+
+redirect curent pointer next to an empty node,
+take pointer of empty node and change item and next to 1
+
+1 ->  2 -> h
+x = h = 3
+1 -> 2 -> 3 -> 1
