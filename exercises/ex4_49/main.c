@@ -4,7 +4,7 @@
 #include <stdio.h>
 
 int main(int argc, char *argv[]){
-	STACKinit();
+	STACKinit(10);
 	Item a = 2;
 	Item b = 4;
 	Item c = 15;
@@ -17,4 +17,7 @@ int main(int argc, char *argv[]){
 	STACKpush(c);
 	STACKpush(a);
 	assert(STACKpop() == a);
+	STACKpop();
+	assert(STACKempty());
+	printf("Successful execution");
 }

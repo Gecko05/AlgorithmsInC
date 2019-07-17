@@ -24,7 +24,7 @@ int isAvailable(Item item){
 }
 
 void STACKpush(Item item){
-	if (isAvailable(item){
+	if (isAvailable(item)){
 		s[N++] = item;
 	}
 }
