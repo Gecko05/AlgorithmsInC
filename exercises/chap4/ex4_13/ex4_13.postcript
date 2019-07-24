@@ -1,0 +1,11 @@
+0 0 moveto
+100 0 rlineto
+90 rotate
+100 0 rlineto
+-90 rotate
+100 0 rlineto
+-90 rotate
+100 0 rlineto
+90 rotate
+100 0 rlineto
+stroke

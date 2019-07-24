@@ -11,7 +11,7 @@ void main(int argc, char *argv[])
         if (a[i] == ')'){
             printf("%c ", STACKpop());
         }
-        if ((a[i] == '+') || (a[i] == '-') || (a[i] == '*') || (a[i] == '/')){
+        if ((a[i] == '+') || (a[i] == '-') || (a[i] == '*') || (a[i] == '/') || (a[i] == '$')){
             STACKpush(a[i]);
         }
         if ((a[i] >= '0') && (a[i] <= '9')

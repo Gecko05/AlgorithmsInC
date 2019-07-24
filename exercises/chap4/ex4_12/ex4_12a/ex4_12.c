@@ -15,15 +15,15 @@ int main(int argc, char *argv[]){
       STACKpush(STACKpop()*STACKpop());
     }
     if (a[i] == '-'){
-      int _a = STACKpop();
-      int _b = STACKpop();
-      int _c = _b - _a;
+      Item _a = STACKpop();
+      Item _b = STACKpop();
+      Item _c = _b - _a;
       STACKpush(_c);
     }
     if (a[i] == '/'){
-      int _a = STACKpop();
-      int _b = STACKpop();
-      int _c = _b / _a;
+      Item _a = STACKpop();
+      Item _b = STACKpop();
+      Item _c = _b / _a;
       STACKpush(_c);
     }
     if (a[i] == '$'){
@@ -36,5 +36,5 @@ int main(int argc, char *argv[]){
       STACKpush(10 * STACKpop() + a[i++] - '0');
     }
   }
-  printf("%d \n", STACKpop());
+  printf("%f \n", STACKpop());
 }
