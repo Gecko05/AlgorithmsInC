@@ -3,28 +3,36 @@
 
 static int max_n;
 static int N;
-static Item *s;
-void STACKinit(Item maxN)
+
+stack_p STACKinit(Item maxN)
 {
   max_n = maxN;
-  s = malloc(maxN * sizeof(Item));
+  Item *s = malloc(maxN * sizeof(Item));
   N = 0;
+  stack_p sp = malloc(sizeof(*sp));
+  sp->s = s;
+  sp->N = N;
+  return sp;
 }
 
-int STACKempty()
+int STACKempty(stack_p stack)
 {
-  return !N;
+  return !stack->N;
 }
 
-void STACKpush(Item item)
+void STACKpush(stack_p stack, Item item)
 {
-  if(max_n > N)
-    s[N++] = item;
+  if(max_n > stack->N)
+    stack->s[stack->N++] = item;
 }
 
-Item STACKpop()
+Item STACKpop(stack_p stack)
 {
-  if(N != 0)
-    N--;
-    return s[N];
+  if(stack->N != 0)
+    stack->N--;
+    return stack->s[stack->N];
+}
+
+void STACKdestroy(stack_p stack){
+  free(stack);
 }
