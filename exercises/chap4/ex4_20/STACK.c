@@ -28,7 +28,7 @@ void STACKpush(Item item)
 
 Item STACKpop()
 {
-  if (N <= 0 || N >= staclSize){
+  if (N <= 0 || N >= stackSize){
     return STACKerror();
   }
   else{
