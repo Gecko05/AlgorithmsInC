@@ -1,42 +1,40 @@
-#include "STACK.h"
 #include <stdlib.h>
-#include <string.h>
-
-static Item *s;
-static int *n;
-static int N;
-static int stackSize;
-static int head;
-
-static int NEW(Item item, int next){
-  s[N++] = item;
-  n[N] = next;
+#include "Item.h"
+typedef struct STACKnode* link;
+struct STACKnode{
+  Item item;
+  link next;
 }
-
-void STACKinit(int maxN)
-{
-  s = malloc(maxN * sizeof(Item));
-  n = malloc(maxN * sizeof(int));
-  memset(s, 0, maxN);
-  stackSize = maxN;
-  head = 0;
-  N = 0;
+static link head;
+void STACKerror(){
+  printf("The system is not able to perform this operation\n");
+  return;
 }
-
-int STACKempty()
-{
-  return N == 0;
+link NEW(Item item, link next){
+  link x = malloc(sizeof(*x));
+  if (x == NULL){
+    return STACKerr();
+  }
+  x->item = item;
+  x->next = next;
+  return x;
 }
-
-void STACKpush(Item item)
-{
+void STACKinit(int maxN){
+  head = NULL;
+}
+int STACKempty(){
+  return head == NULL;
+}
+void STACKpush(Item item){
   head = NEW(item, head);
 }
-
-Item STACKpop()
-{
-  Item item = s[head];
-  head = n[head];
-  N--;
+Item STACKpop(){
+  if (STACKempty){
+    return STACKerror();
+  }
+  Item item = head->item;
+  link t = head->next;
+  free(head);
+  head = t;
   return item;
 }
