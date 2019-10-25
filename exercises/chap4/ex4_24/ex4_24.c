@@ -5,14 +5,26 @@
 
 void main(int argc, char *argv[])
 {
-    struct Stack stack1 = { STACK1 };
-    struct Stack stack2 = { STACK2 };
-    int N = 10;
+    int N = 6;
     Item a = 2;
     STACKSinit(N);
-    stack_push(&stack1, a);
-    Item b = stack_pop(&stack1);
-    printf("Item: %i\n", (int)b);
-    destroyStacks();
+    for (int i = 0; i < 5; i++){
+        STACK1push(i);
+        STACK2push(4-i);
+    }
+    STACKSprint();
+    for (int i = 0; i < 3; i++){
+        STACK1push(i);
+    }
+    STACKSprint();
+    for (int i = 0; i < 3; i++){
+        STACK1push(i);
+    }
+    STACKSprint();
+    for (int i = 0; i < 11; i++){
+        STACK2push(i);
+    }
+    STACKSprint();
+    destroySTACKS();
     printf("Success\n");
 }
