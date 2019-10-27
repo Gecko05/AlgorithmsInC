@@ -1,0 +1,11 @@
+Sequence E a s Y
+i) E s a Y:
+E * a s * * Y *
+ii) Y a s E:
+In order to get the Y we need to push the whole sequence, after which
+the "a" remains in the middle of the queue and thus we cannot get it
+with a deque
+iii) a Y s E:
+E a * s Y + * +
+iv) a s Y E:
+E a * s * Y + +

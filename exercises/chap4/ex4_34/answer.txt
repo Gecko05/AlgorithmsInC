@@ -1,0 +1,29 @@
+E A s + Y + Q U E * * + s t + * + I O * n + + *
+
+STACK contents after each operation:
+E
+A E
+A E s
+E s
+Y E s
+E s
+Q E s
+U Q E s
+E U Q E s
+E U Q E
+E U Q
+U Q
+U Q s
+U Q s t
+U Q s
+Q s
+Q
+
+I
+O I
+O
+O n
+n
+
+Returned sequence:
+A Y s  E E t U s Q I O n
