@@ -11,16 +11,21 @@ struct QUEUEnode{
 static link head;
 static link tail;
 
-link NEW(Item item, link next)
-{
-    link x = malloc(sizeof *x);
-    x->item = item;
-    x->next = next;
-    return x;
-}
-
 void QUEUEerror(){
     printf("Operation not available\n");
+}
+
+link NEW(Item item, link next, link prev)
+{
+    link x = malloc(sizeof *x);
+    if (x == NULL){
+        QUEUEerror();
+        return;
+    }
+    x->item = item;
+    x->next = next;
+    x->prev = prev;
+    return x;
 }
 
 void QUEUEinit(int maxN){
@@ -30,19 +35,41 @@ void QUEUEinit(int maxN){
 int QUEUEempty(){
     return head == NULL;
 }
-// Place at the end of the
+// Place at the end of the dequeue
 void QUEUEput(Item item)
-{   if (head == NULL){
-        tail = NEW(item,head);
+{
+    if (head == NULL){
+        tail = NEW(item,head,NULL);
         head = tail;
         return;
     }
-    else{
-        QUEUEerror();
+    tail->next = NEW(item, tail->next, tail);
+    tail = tail->next;
+}
+// Place at the beginning of the dequeue
+void QUEUEpush(Item item)
+{
+    if (head == NULL){
+        tail = NEW(item,head, NULL);
+        head = tail;
         return;
     }
-    tail->next = NEW(item, tail->next);
-    tail = tail->next;
+    head->prev = NEW(item, head, head->prev);
+    head = head->prev;
+}
+
+void QUEUEpop()
+{
+  if (QUEUEempty()){
+    QUEUEerror();
+    return;
+  }
+  Item item = tail->item;
+  link t = tail->prev;
+  t->next = tail->next;
+  free(tail);
+  tail = t;
+  return item;
 }
 
 Item QUEUEget()
@@ -53,6 +80,7 @@ Item QUEUEget()
     }
     Item item = head->item;
     link t = head->next;
+    t->prev = head->prev;
     free(head);
     head = t;
     return item;

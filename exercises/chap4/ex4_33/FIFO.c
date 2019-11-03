@@ -36,10 +36,6 @@ void QUEUEput(Item item)
         head = tail;
         return;
     }
-    else{
-        QUEUEerror();
-        return;
-    }
     tail->next = NEW(item, tail->next);
     tail = tail->next;
 }
