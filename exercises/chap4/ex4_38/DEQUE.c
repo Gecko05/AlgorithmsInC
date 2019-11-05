@@ -1,5 +1,7 @@
 #include <stdlib.h>
-#include "Item.h"
+#include "DEQUE.h"
+
+// DEQUE INTERFACE
 
 typedef struct QUEUEnode *link;
 struct QUEUEnode{
