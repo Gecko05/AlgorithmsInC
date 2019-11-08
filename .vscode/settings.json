@@ -2,6 +2,7 @@
     "files.associations": {
         "stdlib.h": "c",
         "stdio.h": "c",
-        "thread": "c"
+        "thread": "c",
+        "fifo.h": "c"
     }
 }

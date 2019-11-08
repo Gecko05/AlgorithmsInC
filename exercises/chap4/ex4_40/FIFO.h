@@ -1,13 +1,11 @@
-#ifndef DEQUE_H
-#define DEQUE_H
+#ifndef FIFO_H
+#define FIFO_H
 #include "Item.h"
-
-void QUEUEpush(Item item);
 
 void QUEUEput(Item item);
 
 Item QUEUEget();
 
-Item QUEUEpop();
+void QUEUEinit(int maxN);
 
 #endif // DEQUE_H
