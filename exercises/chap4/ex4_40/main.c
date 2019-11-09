@@ -3,7 +3,7 @@
 // General test for FIFO QUEUE
 
 int main(){
-    QUEUEinit(5);
+    QUEUEinit(7);
     for (int i = 0; i < 5; i++){
         QUEUEput(i);
     }

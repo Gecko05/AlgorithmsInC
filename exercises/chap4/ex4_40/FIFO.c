@@ -30,23 +30,25 @@ void QUEUEinit(int maxN)
         t = t->next;
     }
     t->next = head;
-    tail = NULL;
+    tail = head;
 }
 
 int QUEUEempty()
 {
-    return (tail == NULL);
+    return (tail == head);
 }
 // Place at the end of the queue
 void QUEUEput(Item item)
 {
-    if (tail == NULL){
+    if (tail == head){
+        head->item = item;
         tail = head->next;
-        tail->item = item;
+        printf("First put: %i\n", head->item);
     }
     else if (tail->next != head){
-        tail = tail->next;
         tail->item = item;
+        printf("put: %i\n", tail->item);
+        tail = tail->next;
     }
     else{
         QUEUEerror();
@@ -61,7 +63,5 @@ Item QUEUEget()
     }
     Item item = head->item;
     head = head->next;
-    if (head == tail){
-        tail = NULL;
-    }
+    return item;
 }

@@ -1,6 +1,6 @@
 #ifndef ITEM_H
 #define ITEM_H
 
-typedef int Item;
+typedef char Item;
 
 #endif
