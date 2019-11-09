@@ -4,6 +4,7 @@
         "stdio.h": "c",
         "thread": "c",
         "fifo.h": "c",
-        "deque.h": "c"
+        "deque.h": "c",
+        "queue.h": "c"
     }
 }
