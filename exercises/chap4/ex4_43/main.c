@@ -1,6 +1,6 @@
 #include "QUEUE.h"
 #include "stdio.h"
-// General test for FIFO QUEUE
+// General test for QUEUE
 
 int main(){
     QUEUEinit(7);
