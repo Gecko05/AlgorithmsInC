@@ -20,19 +20,25 @@ int isAvailable(Item item){
 			return i;
 		}
 	}
-	return 0;
+	return -1;
 }
 
 void STACKpush(Item item){
 	int position = isAvailable(item);
-	if (item){
+	if (position != -1){
 		for (int i = position; i < N; i++){
 			s[i] = s[i + 1];
 		}
+		s[N - 1] = item;
 	}
-	s[N++] = item;
+	else{
+		s[N++] = item;
+	}
 }
 
 Item STACKpop(void){
-	return s[--N];
+	if (STACKempty() == 0){
+		return s[--N];
+	}
+	return -1;
 }
