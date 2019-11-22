@@ -19,10 +19,11 @@ int main(int argc, char *argv[]){
 	STACKpush(a);
 	STACKpush(b);
 	STACKpush(a);
-
+	printf("Pushed Items...\n");
 	assert(STACKpop() == b);
 	assert(STACKpop() == a);
 
+	printf("Popped Items...\n");
 	assert(STACKpop() == -1);
 	assert(STACKempty() == 1);
 	

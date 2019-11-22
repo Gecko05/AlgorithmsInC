@@ -43,6 +43,9 @@ void STACKpush(Item item){
 }
 
 Item STACKpop(void){
+	if (STACKempty() == 1){
+		return -1;
+	}
 	Item item = head->item;
 	link t = head->next;
 	free(head);
