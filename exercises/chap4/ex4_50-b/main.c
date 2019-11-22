@@ -16,7 +16,6 @@ int main(int argc, char *argv[]){
 	STACKinit(10);
 	Item a = 2;
 	Item b = 4;
-	printf("Initialized...\n");
 	STACKpush(a);
 	STACKpush(b);
 	STACKpush(a);
@@ -28,6 +27,5 @@ int main(int argc, char *argv[]){
 	assert(STACKpop() == -1);
 	assert(STACKempty() == 1);
 	
-	STACKdestroy();
 	printf("Successful execution\n");
 }

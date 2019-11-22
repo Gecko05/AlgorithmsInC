@@ -6,6 +6,5 @@ void STACKinit(int maxN);
 Item STACKpop(void);
 void STACKpush(Item item);
 int STACKempty(void);
-void STACKdestroy();
 
 #endif
