@@ -5,6 +5,7 @@
         "thread": "c",
         "fifo.h": "c",
         "deque.h": "c",
-        "queue.h": "c"
+        "queue.h": "c",
+        "assert.h": "c"
     }
 }
