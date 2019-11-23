@@ -1,10 +1,11 @@
 #ifndef STACK_H
 #define STACK_H
 #include "Item.h"
+#include <stdio.h>
 
-void STACKinit(int maxN);
-Item STACKpop(void);
-void STACKpush(Item item);
-int STACKempty(void);
+void QUEUEinit(int maxN);
+Item QUEUEget(void);
+void QUEUEput(Item item);
+int QUEUEempty(void);
 
 #endif

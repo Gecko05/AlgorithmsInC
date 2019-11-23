@@ -3,28 +3,26 @@
 #include <assert.h>
 #include <stdio.h>
 
-void dumpStack(){
-	printf("Dumping stack... ");
-	while (STACKempty() == 0){
-		Item a = STACKpop();
-		printf(" %i", a);
-	}
-	printf("\n");
-}
-
 int main(int argc, char *argv[]){
-	STACKinit(10);
-	Item a = 2;
-	Item b = 4;
-	STACKpush(a);
-	STACKpush(b);
-	STACKpush(a);
+	QUEUEinit(10);
+	Item a = 1;
+	Item b = 2;
+	Item c = 3;
+	Item d = 5;
+	Item e = 6;
 
-	assert(STACKpop() == a);
-	assert(STACKpop() == b);
+	QUEUEput(a);
+	assert(QUEUEget() == a);
+	QUEUEput(b);
+	QUEUEput(a);
+	QUEUEput(c);
+	QUEUEput(a);
+	QUEUEput(b);
+	assert(QUEUEget() == c);
+	assert(QUEUEget() == a);
+	assert(QUEUEget() == b);
 
-	assert(STACKpop() == -1);
-	assert(STACKempty() == 1);
+	assert(QUEUEget() == -1);
 	
-	printf("Successful execution\n");
+	printf("Successful execution\n ");
 }
