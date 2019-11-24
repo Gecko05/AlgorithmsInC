@@ -4,7 +4,7 @@ typedef struct STACKnode* link;
 struct STACKnode{
   Item item;
   link next;
-}
+};
 static link head;
 void STACKerror(){
   printf("The system is not able to perform this operation\n");

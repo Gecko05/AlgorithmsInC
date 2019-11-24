@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include "Item.h"
 
-// FIFO queue arrya implementation with error call
+// FIFO queue array implementation with error call
 static Item *q;
 static int N;
 static int head;
