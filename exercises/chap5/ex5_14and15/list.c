@@ -11,21 +11,33 @@ struct node{
 };
 
 link head;
+void *g;
 
-static void deleteNode(link x, link p){
-    if (p && x){
-        p->next = x->next;
-        free(x);
+void *reverseList(void *l){
+    link x = (link)l;
+    if (x->next == NULL){
+        g = l;
+        return x;
+    }
+    else{
+        link n = reverseList(x->next);
+        n->next = x;
+        x->next = NULL;
+        return x;
     }
 }
 
-void deleteFinalElement(void *l, void *p){
+void *deleteFinalElement(void *l){
     link x = ((link)l);
+    void *p;
     if (x->next == NULL){
-        return deleteNode(x, (link)p);
+        free(x);
+        return NULL;
     }
     else{
-        return deleteFinalElement((void *)x->next, l);
+        p = deleteFinalElement((void *)x->next);
+        x->next = p;
+        return l;
     }
 }
 
