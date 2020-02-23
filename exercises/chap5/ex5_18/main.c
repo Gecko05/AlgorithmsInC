@@ -4,11 +4,25 @@
 
 #define N 10
 
+int expint(int a, int b){
+    int p = b;
+    int r = a;
+    if (p == 0){
+        return 1;
+    }
+    while (p != 0){
+        r = r * a;
+        p--;
+    }
+}
+
 int max(int *a, int l, int r){
     int u, v;
     int n = l + r;
-    int m = pow(2, log10(n) - 1);
-    printf("%i\n", m);
+    int lg = log10(n);
+    printf("log %i\n", lg);
+    int m = expint(2, lg - 1);
+    printf("pow %i\n", m);
     if (l == r){
         return a[l];
     }
