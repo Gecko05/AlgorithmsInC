@@ -7,6 +7,7 @@
         "deque.h": "c",
         "queue.h": "c",
         "assert.h": "c",
-        "item.h": "c"
+        "item.h": "c",
+        "cmath": "c"
     }
 }
