@@ -10,7 +10,7 @@ int exptwo(int b){
     return (exptwo(b - 1) * 2);
 }
 
-void fillBin(int r, int l, int **a, int h){
+void fillBinRec(int r, int l, int **a, int h){
     int m = (r + l) / 2;
     if (h > 0){
         
@@ -18,15 +18,21 @@ void fillBin(int r, int l, int **a, int h){
             a[i][h-1] = 0;
         }
 
-        fillBin(r, m, a, h - 1);
+        fillBinRec(r, m, a, h - 1);
         
         for (int i = m; i < l; i++){
             a[i][h-1] = 1;
         }
 
-        fillBin(m, l, a, h - 1);
+        fillBinRec(m, l, a, h - 1);
     }
     
+}
+
+void fillBin(int **a, int d){
+    int len = exptwo(d);
+    int r = 0;
+    fillBinRec(r, len, a, d);
 }
 
 int main(int argc, char *argv[]){
@@ -37,7 +43,7 @@ int main(int argc, char *argv[]){
         array[i] = (int *)malloc(sizeof(int) * N);
     }
 
-    fillBin(0, a, array, N);
+    fillBin(array, N);
     for (int i = 0; i < a; i++){
         for (int j = N - 1; j >= 0; j --){
             printf("%i", array[i][j]);
