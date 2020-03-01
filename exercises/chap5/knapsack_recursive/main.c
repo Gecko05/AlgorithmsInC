@@ -11,19 +11,20 @@ Item items[N];
 
 int knap(int cap){
     int space;
-    int i;
     int max;
     int t;
+    int i; // Declaring it inside the loop would also declare max inside the loop
     for (i = 0, max = 0; i < N; i++){
         if ((space = cap - items[i].size) >= 0)
         {
             if ((t = knap(space) + items[i].val) > max)
             {
                 max = t;
+                printf("max: %i\n", max);
             }
         }
     }
-    printf("call\n");
+    printf("max: %i\n", max);
     return max;
 }
 
