@@ -8,6 +8,7 @@
         "queue.h": "c",
         "assert.h": "c",
         "item.h": "c",
-        "cmath": "c"
+        "cmath": "c",
+        "limits": "c"
     }
 }
