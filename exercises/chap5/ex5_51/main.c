@@ -29,11 +29,11 @@ int knap(int cap){
                 int prev = table[i-1][j];
                 // Previous value plus the weight of the curent item if posssible
                 int new;
-                if (j - items[i].size < 0){
-                    new = 0;
+                if (items[i - 1].size <= j){
+                    new = items[i-1].val + table[i-1][j-items[i-1].size];
                 }
                 else{
-                    new = items[i-1].val + table[i-1][j-items[i-1].size];
+                    new = 0;
                 }
                 int max = maxInt(prev, new);
                 printf("%i ", max);
@@ -46,7 +46,7 @@ int knap(int cap){
         printf("\n");
     }
     printf("max: %i\n", table[N-1][cap-1]);
-    return maxC;
+    return table[N][cap];
 }
 
 int main(int argc, char *argv[]){
