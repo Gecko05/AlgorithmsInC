@@ -8,23 +8,36 @@ typedef struct {
 
 #define N 5
 Item items[N];
+int pack[N][10];
 
 int knap(int cap){
     int space;
     int max;
     int t;
     int i; // Declaring it inside the loop would also declare max inside the loop
+    
+    
     for (i = 0, max = 0; i < N; i++){
         if ((space = cap - items[i].size) >= 0)
         {
-            if ((t = knap(space) + items[i].val) > max)
+            if (pack[i][space] != -1)
+            {
+                int p = pack[i][space] + items[i].val;
+                if (p > max){
+                    max = p;
+                    pack[i][cap] = max;
+                    printf("max: %i\n", max); 
+                }
+            }
+            else if ((t = knap(space) + items[i].val) > max)
             {
                 max = t;
-                printf("max: %i\n", max);
+                pack[i][cap] = max;
+                //printf("max: %i\n", max);
             }
         }
     }
-    printf("max: %i\n", max);
+    //printf("max: %i\n", max);
     return max;
 }
 
@@ -39,5 +52,10 @@ int main(int argc, char *argv[]){
     items[2] = itemC;
     items[3] = itemD;
     items[4] = itemE;
+    for (int i = 0; i < N; i++){
+        for (int j = 0; j < 10; j++){
+            pack[i][j] = -1;
+        }
+    }
     printf("Knap of %i: %i\n", 10, knap(10));
 }
