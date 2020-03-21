@@ -33,7 +33,7 @@ int knap(int cap){
             {
                 max = t;
                 pack[i][cap] = max;
-                //printf("max: %i\n", max);
+                printf("max: %i\n", max);
             }
         }
     }
