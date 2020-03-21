@@ -27,7 +27,7 @@ int knap(int cap){
             else {
                 // Previous value with same size
                 int prev = table[i-1][j];
-                // Previous value plus the weight of the curent item if posssible
+                // Previous row value plus the weight of the curent item if posssible
                 int new;
                 if (items[i - 1].size <= j){
                     new = items[i-1].val + table[i-1][j-items[i-1].size];
