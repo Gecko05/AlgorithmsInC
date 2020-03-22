@@ -8,18 +8,18 @@ struct node{
     link l;
 };
 
-int getLeftItem(link a){
-    if (a->l){
-        return a->l->item;
+int getLeftItem(link x){
+    if (x->l){
+        return x->l->item;
     }
     else{
         return -1;
     }
 }
 
-int getRightItem(link a){
-    if (a->l){
-        return a->l->item;
+int getRightItem(link x){
+    if (x->r){
+        return x->r->item;
     }
     else{
         return -1;
@@ -33,6 +33,7 @@ int areIsomorphic(link a, link b)
     }
     else if (a == NULL || b == NULL)
     {
+        printf("One is empty\n");
         return 0;
     }
     int t = 0;
@@ -45,13 +46,19 @@ int areIsomorphic(link a, link b)
     {
         t = areIsomorphic(a->l, b->r);
     }
+    else{
+        printf("Left/Right items:%i %i\n", getLeftItem(a), getRightItem(b));
+    }
     if (getRightItem(a) == getRightItem(b))
     {
         x = areIsomorphic(a->r, b->r);
     }
-    else if(getRightItem(a) == getLeftItem(a))
+    else if(getRightItem(a) == getLeftItem(b))
     {
         x = areIsomorphic(a->r, b->l);
+    }
+    else{
+        printf("Right/Left items:%i %i\n", getRightItem(a), getLeftItem(b));
     }
     if (a->item == b->item && x == 1 && t == 1){
         printf("a:%i b:%i l:%i r:%i\n", a->item, b->item, t, x);
@@ -59,6 +66,7 @@ int areIsomorphic(link a, link b)
     }
     else{
         printf("Not isomorphic\n");
+        printf("a:%i b:%i l:%i r:%i\n\n", a->item, b->item, t, x);
         return 0;
     }
 }
@@ -88,13 +96,13 @@ int main(int argc, char *argv[])
         t->r = v->r = NULL;
         if (i % 2 == 0){
             f->l = t;
+            f = f->r;
             g->l = v;
+            g = g->r;
         }
         else{
             f->r = t;
             g->r = v;
-            f = f->r;
-            g = g->r;
         }
 
     }
