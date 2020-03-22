@@ -46,9 +46,6 @@ int areIsomorphic(link a, link b)
     {
         t = areIsomorphic(a->l, b->r);
     }
-    else{
-        printf("Left/Right items:%i %i\n", getLeftItem(a), getRightItem(b));
-    }
     if (getRightItem(a) == getRightItem(b))
     {
         x = areIsomorphic(a->r, b->r);
@@ -56,9 +53,6 @@ int areIsomorphic(link a, link b)
     else if(getRightItem(a) == getLeftItem(b))
     {
         x = areIsomorphic(a->r, b->l);
-    }
-    else{
-        printf("Right/Left items:%i %i\n", getRightItem(a), getLeftItem(b));
     }
     if (a->item == b->item && x == 1 && t == 1){
         printf("a:%i b:%i l:%i r:%i\n", a->item, b->item, t, x);
