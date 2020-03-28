@@ -22,7 +22,7 @@ link newTree(int size)
         t->r = NULL;
         if (i % 2 == 0){
             f->l = t;
-            f = f->r;
+            f = f->l;
         }
         else{
             f->r = t;

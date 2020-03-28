@@ -69,7 +69,12 @@ Item QUEUEpop()
   }
   Item item = tail->item;
   link t = tail->prev;
-  t->next = tail->next;
+  if (t != NULL){
+    t->next = tail->next;
+  }
+  else{
+      head = NULL;
+  }
   free(tail);
   tail = t;
   return item;
@@ -83,7 +88,9 @@ Item QUEUEget()
     }
     Item item = head->item;
     link t = head->next;
-    t->prev = head->prev;
+    if (t != NULL){
+        t->prev = head->prev;
+    }
     free(head);
     head = t;
     return item;

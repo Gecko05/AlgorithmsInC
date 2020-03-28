@@ -9,12 +9,14 @@
 void traverse(link h, void (*visit)(link))
 {
     QUEUEinit();
-    QUEUEpush((void*)h);
-    while (!QUEUEempty())
+    while (h != NULL || QUEUEempty() == 0)
     {   
-        if (h->l != NULL) QUEUEpush((void*)h->l);
-        (*visit)(h = (link)QUEUEpop());
-        if (h->r != NULL) QUEUEpush((void*)h->r);
+        while (h != NULL){
+            QUEUEpush((void*)h);
+            h = h->l;
+        }
+        (*visit)(h = (link)QUEUEget());
+        h = h->r;
     }
 }
 
