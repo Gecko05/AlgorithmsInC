@@ -9,24 +9,29 @@
 void traverse(link h, void (*visit)(link))
 {
     QUEUEinit();
-    while (h != NULL || QUEUEempty() == 0)
+    do
     {   
         while (h != NULL){
+            if (h->r){
+                QUEUEpush((void*)h->r);
+            }
             QUEUEpush((void*)h);
             h = h->l;
         }
-        h = (link)QUEUEpop();
-        link b = h->r;
-        QUEUEpush((void*)h);
-        h = b;
-        if (h->r){
+        h = QUEUEpop();
+        link rc = QUEUEpop();
+        if (h->r && h->r == rc){
             QUEUEpush((void*)h);
             h = h->r;
         }
         else{
+            if (rc != NULL){
+                QUEUEpush(rc);
+            }
             (*visit)(h);
+            h = NULL;
         }
-    }
+    }while (QUEUEempty() == 0);
 }
 
 void printNode(link node)
