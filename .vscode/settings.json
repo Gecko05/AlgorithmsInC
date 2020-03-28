@@ -9,6 +9,7 @@
         "assert.h": "c",
         "item.h": "c",
         "cmath": "c",
-        "limits": "c"
+        "limits": "c",
+        "tree.h": "c"
     }
 }

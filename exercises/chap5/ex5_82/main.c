@@ -1,17 +1,10 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "DEQUE.h"
+#include "TREE.h"
 
-#define N 10
+#define N 6
 // Non recursive implementation of inorder traversal
-
-typedef struct node* link;
-
-struct node{
-    link l;
-    link r;
-    int item;
-};
 
 void traverse(link h, void (*visit)(link))
 {
@@ -32,22 +25,9 @@ void printNode(link node)
 
 int main(int argc, char *argv[])
 {
-    link f = malloc(sizeof(*f));
-    f->item = 0;
-    link r1 = f;
-    for (int i = 1; i <= 6; i++){
-        link t = malloc(sizeof(*t));
-        t->item = i;
-        t->l = NULL;
-        t->r = NULL;
-        if (i % 2 == 0){
-            f->l = t;
-            f = f->r;
-        }
-        else{
-            f->r = t;
-        }
-    }
+    link r1 = newTree(N);
     traverse(r1, printNode);
+    printf("Done\n");
     QUEUEdestroy();
+    destroyTree(r1);
 }

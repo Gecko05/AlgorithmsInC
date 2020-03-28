@@ -10,6 +10,7 @@ struct QUEUEnode{
     link prev;
 };
 
+Item empty = 0;
 static link head;
 static link tail;
 
@@ -22,7 +23,7 @@ link NEW(Item item, link next, link prev)
     link x = malloc(sizeof *x);
     if (x == NULL){
         QUEUEerror();
-        return;
+        return empty;
     }
     x->item = item;
     x->next = next;
@@ -64,7 +65,7 @@ Item QUEUEpop()
 {
   if (QUEUEempty()){
     QUEUEerror();
-    return;
+    return empty;
   }
   Item item = tail->item;
   link t = tail->prev;
@@ -78,7 +79,7 @@ Item QUEUEget()
 {
     if (QUEUEempty()){
         QUEUEerror();
-        return;
+        return empty;
     }
     Item item = head->item;
     link t = head->next;
