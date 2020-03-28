@@ -91,12 +91,12 @@ int main(int argc, char *argv[])
         if (i % 2 == 0){
             f->l = t;
             f = f->r;
-            g->l = v;
-            g = g->r;
+            g->r = v;
+            g = g->l;
         }
         else{
             f->r = t;
-            g->r = v;
+            g->l = v;
         }
 
     }
