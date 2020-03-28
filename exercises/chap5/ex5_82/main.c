@@ -15,7 +15,7 @@ void traverse(link h, void (*visit)(link))
             QUEUEpush((void*)h);
             h = h->l;
         }
-        (*visit)(h = (link)QUEUEget());
+        (*visit)(h = (link)QUEUEpop());
         h = h->r;
     }
 }

@@ -10,6 +10,7 @@ struct QUEUEnode{
     link prev;
 };
 
+Item empty = 0;
 static link head;
 static link tail;
 
@@ -22,7 +23,7 @@ link NEW(Item item, link next, link prev)
     link x = malloc(sizeof *x);
     if (x == NULL){
         QUEUEerror();
-        return;
+        return empty;
     }
     x->item = item;
     x->next = next;
@@ -38,7 +39,7 @@ int QUEUEempty(){
     return head == NULL;
 }
 // Place at the end of the dequeue
-void QUEUEput(Item item)
+void QUEUEpush(Item item)
 {
     if (head == NULL){
         tail = NEW(item,head,NULL);
@@ -49,7 +50,7 @@ void QUEUEput(Item item)
     tail = tail->next;
 }
 // Place at the beginning of the dequeue
-void QUEUEpush(Item item)
+void QUEUEput(Item item)
 {
     if (head == NULL){
         tail = NEW(item,head, NULL);
@@ -64,11 +65,16 @@ Item QUEUEpop()
 {
   if (QUEUEempty()){
     QUEUEerror();
-    return;
+    return empty;
   }
   Item item = tail->item;
   link t = tail->prev;
-  t->next = tail->next;
+  if (t != NULL){
+    t->next = tail->next;
+  }
+  else{
+      head = NULL;
+  }
   free(tail);
   tail = t;
   return item;
@@ -78,11 +84,13 @@ Item QUEUEget()
 {
     if (QUEUEempty()){
         QUEUEerror();
-        return;
+        return empty;
     }
     Item item = head->item;
     link t = head->next;
-    t->prev = head->prev;
+    if (t != NULL){
+        t->prev = head->prev;
+    }
     free(head);
     head = t;
     return item;

@@ -39,7 +39,7 @@ int QUEUEempty(){
     return head == NULL;
 }
 // Place at the end of the dequeue
-void QUEUEput(Item item)
+void QUEUEpush(Item item)
 {
     if (head == NULL){
         tail = NEW(item,head,NULL);
@@ -50,7 +50,7 @@ void QUEUEput(Item item)
     tail = tail->next;
 }
 // Place at the beginning of the dequeue
-void QUEUEpush(Item item)
+void QUEUEput(Item item)
 {
     if (head == NULL){
         tail = NEW(item,head, NULL);
