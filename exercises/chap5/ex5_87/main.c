@@ -31,4 +31,5 @@ int main(int argc, char *argv[]){
     int c = 0;
     (void)countNodes(root, &c);
     printf("Nodes with internal and external child: %i\n", c);
+    destroyTree(root);
 }

@@ -1,4 +1,4 @@
-#include "tree.h"
+#include "TREE.h"
 
 void destroyTree(link a)
 {

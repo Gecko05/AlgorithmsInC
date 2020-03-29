@@ -10,6 +10,7 @@
         "item.h": "c",
         "cmath": "c",
         "limits": "c",
-        "tree.h": "c"
+        "tree.h": "c",
+        "graph.h": "c"
     }
 }

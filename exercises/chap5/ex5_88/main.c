@@ -28,4 +28,5 @@ int main(int argc, char *argv[]){
     int level = 0;
     int pathLen = countNodes(root, level);
     printf("Internal path Len: %i\n", pathLen);
+    destroyTree(root);
 }
