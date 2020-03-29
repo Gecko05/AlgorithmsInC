@@ -18,4 +18,7 @@ void QUEUEdestroy();
 
 int QUEUEempty();
 
+// Prints the contents of the QUEUE
+void QUEUEprint();
+
 #endif // DEQUE_H

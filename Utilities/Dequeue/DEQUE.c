@@ -18,12 +18,12 @@ void QUEUEerror(){
     printf("Operation not available\n");
 }
 
-link NEW(Item item, link next, link prev)
+static link NEW(Item item, link next, link prev)
 {
     link x = malloc(sizeof *x);
     if (x == NULL){
         QUEUEerror();
-        return empty;
+        return NULL;
     }
     x->item = item;
     x->next = next;
@@ -104,4 +104,15 @@ void QUEUEdestroy()
         free(head);
         head = x;
     }
+}
+
+void QUEUEprint(){
+    link x = head;
+    while (x != NULL){
+        #ifdef IS_PRINTABLE
+        printf("%i ", x->item);
+        #endif
+        x = x->next;
+    }
+    printf("\n");
 }

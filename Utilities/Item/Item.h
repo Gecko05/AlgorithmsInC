@@ -1,6 +1,7 @@
 #ifndef ITEM_H
 #define ITEM_H
 
-typedef void* Item;
+#define IS_PRINTABLE
+typedef int Item;
 
 #endif
