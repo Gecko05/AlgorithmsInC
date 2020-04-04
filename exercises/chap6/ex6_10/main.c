@@ -25,6 +25,7 @@ Item *sortFile(const char *name, int *l, int *r){
         c++;
         a = realloc(a, c*(sizeof(*a)));
         a[c-1] = v;
+        printf("l");
     }while (s != NULL);
     *l = 0;
     *r = c;
@@ -40,20 +41,17 @@ int verifySort(Item *a, int l, int r){
         if (a[i] < p){
             res = 0;
         }
-        #ifdef DEBUG
         printf("%i\n", p);
-        #endif
         p = a[i];
     }
-    #ifdef DEBUG
     printf("\n");
-    #endif
     return res;
 }
 
 int runSort(const char* name){
     int l, r;
     Item *a = sortFile(name, &l, &r);
+    printf("Running\n");
     int result = verifySort(a, l, r);
     free(a);
     return result;
