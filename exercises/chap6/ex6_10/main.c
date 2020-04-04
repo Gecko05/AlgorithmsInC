@@ -37,10 +37,12 @@ Item *sortFile(const char *name, int *l, int *r){
 int verifySort(Item *a, int l, int r){
     int res = 1;
     for (int i = l + 1; i <= r; i++){
+        printf("%i ", a[i]);
         if (a[i] < a[i-1]){
             res = 0;
         }
     }
+    printf("\n");
     return res;
 }
 
