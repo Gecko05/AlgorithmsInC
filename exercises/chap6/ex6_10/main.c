@@ -13,19 +13,19 @@ const char *testFiles[] = {"file1",
                            "file4"};
 
 Item *sortFile(const char *name, int *l, int *r){
-    FILE *fp = fopen(name, "rb");
+    FILE *fp = fopen(name, "r");
     char rBuffer[10];
     Item v;
     char *s;
     Item *a = malloc(sizeof(*a));
-    int c;
+    int c = 0;
     do{
         s = fgets(rBuffer,10,fp);
         v = atoi(rBuffer);
         c++;
         a = realloc(a, c*(sizeof(*a)));
         a[c-1] = v;
-        printf("l");
+        //printf("%i", a[c-1]);
     }while (s != NULL);
     *l = 0;
     *r = c;
@@ -35,23 +35,18 @@ Item *sortFile(const char *name, int *l, int *r){
 }
 
 int verifySort(Item *a, int l, int r){
-    int p = a[l];
     int res = 1;
-    for (int i = l + 1; i < r; i++){
-        if (a[i] < p){
+    for (int i = l + 1; i <= r; i++){
+        if (a[i] < a[i-1]){
             res = 0;
         }
-        printf("%i\n", p);
-        p = a[i];
     }
-    printf("\n");
     return res;
 }
 
 int runSort(const char* name){
     int l, r;
     Item *a = sortFile(name, &l, &r);
-    printf("Running\n");
     int result = verifySort(a, l, r);
     free(a);
     return result;
