@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 typedef int Item;
+
+// Example of array sort with driver program
 #define key(A) (A)
 #define less(A, B) (key(A) < key(B))
 #define exch(A, B) {Item t = A; A = B; B = t; }
