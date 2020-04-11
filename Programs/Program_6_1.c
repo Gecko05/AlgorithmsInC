@@ -8,6 +8,7 @@ typedef int Item;
 #define exch(A, B) {Item t = A; A = B; B = t; }
 #define compexch(A, B) if (less(B, A)) exch(A, B)
 
+// Nonadaptive insertion sort
 void sort(Item a[], int l, int r)
 {
     int i;
