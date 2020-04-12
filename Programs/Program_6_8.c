@@ -20,7 +20,7 @@ void scaninit(Item a[], int *N){
     *N = i;
 }
 
-void show(itemType a[], int l, int r){
+void show(Item a[], int l, int r){
     int i;
     for (i = l; i <= r; i++){
         ITEMshow(a[i]);
