@@ -41,6 +41,23 @@ void show(link h){
     printf("\n");
 }
 
+link findmax(link h){
+    if (h == NULL){
+        return NULL;
+    }
+    int maxi = h->item;
+    link x = h->next;
+    link maxLink = h;
+    while (x != NULL){
+        if (x->item > maxi){
+            maxi = x->item;
+            maxLink = x;
+        }
+        x = x->next;
+    }
+    return maxLink;
+}
+
 link sort(link h){
     link max, t, out = NULL;
     while (h->next != NULL)
