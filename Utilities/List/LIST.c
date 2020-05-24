@@ -1,20 +1,11 @@
-// Bubble sort for linked list
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
+#include "LIST.h"
 
-typedef int Item;
-typedef struct node *link;
-struct node{
-    link next;
-    Item item;
-};
-
-link bubbleSort(link h){
+link bubbleSort(link x){
+    link h = x;
     link y = h;
     link p_y = h;
     int m = 1;
-    if (h == NULL || h->next == NULL || h->next->next == NULL){
+    if (x == NULL || x->next == NULL || x->next->next == NULL){
         return h;
     }
     while (m == 1){
@@ -46,36 +37,34 @@ link bubbleSort(link h){
     return h;
 }
 
-int main(int argc, char *argv[])
-{
+link NEW(Item item, link next){
+    link x = malloc(sizeof(*x));
+    x->item = item;
+    x->next = next;
+    return x;
+}
+
+link init(int N){
+    link h = malloc(sizeof(*h));
+    h->next = NULL;
+    link x = h;
     time_t t;
     srand((unsigned) time(&t));
-    // Initialize the unordered random list
-    link head = malloc(sizeof(*head));
-    head->next = NULL;
-    link x = head;
-    for (int i = 0; i < 10; i++){
-        link t = malloc(sizeof(t));
-        t->item = rand() % 10;
-        t->next = NULL;
-        x->next = t;
-        x = t;
+    for (int i = 0; i < N; i++){
+        link t = malloc(sizeof(*h));
+
     }
-    x = head->next;
-    // Print the list
-    while(x != NULL){
-        printf("%i ", x->item);
-        x = x->next;
+    return h;
+}
+
+void show(link h){
+    for (h = h; h != NULL; h = h->next)
+    {
+        printf(" %i", h->item);
     }
     printf("\n");
-    // Sort
-    head = bubbleSort(head);
-    x = head->next;
-    while(x != NULL){
-        link t = x;
-        printf("%i ", x->item);
-        x = x->next;
-        free(t);
-    }
-    printf("\n");
+}
+
+link sort(link h){
+    return bubbleSort(h);
 }
