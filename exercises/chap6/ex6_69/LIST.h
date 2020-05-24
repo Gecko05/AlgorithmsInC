@@ -19,4 +19,7 @@ void show(link h);
 link sort(link h);
 void destroyList(link h);
 
+// Sorting algorithms
+link bubbleSort(link h, int step);
+
 #endif // LIST_H

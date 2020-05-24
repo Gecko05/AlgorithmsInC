@@ -6,29 +6,29 @@
 
 // Shellsort
 /*
-void shellsort(Item a[], int l, int r)
+void shellsort(link a, int l, int r)
 {
     int i;
     int j;
     int h;
+    link x;
 
     for (h = 1; h <= (r-l)/9; h = 3*h+1);
 
     for (h = h ; h > 0; h /= 3){
         for (i = l + h; i <= r; i++){
-            int j = i;
-
-            Item v = a[i];
-            while (j >= l+h && less(v, a[j-h])){
-                a[j] = a[j-h];
-                j -= h;
-            }
-            a[j] = v;
+            
         }
     }
 }*/
 
 int main(int argc, char *argv[]){
+    int N = 20;
+    link list1 = init(N);
+    show(list1);
+    bubbleSort(list1, 1);
+    show(list1);
+    destroyList(list1);
     return 0;
 }
 
