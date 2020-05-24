@@ -50,7 +50,7 @@ link getNextNode(link x, int step)
     link t = x;
     for (int i = 0; i < step; i++){
         if (x == NULL){
-            return x;
+            return NULL;
             //return t;
         }
         x = x->next;
@@ -59,8 +59,8 @@ link getNextNode(link x, int step)
 }
 
 link getPrevNode(link s, link x){
-    link n;
-    while (s != x){
+    link n = s;
+    while (s != x && s != NULL){
         n = s;
         s = s->next;
     }
@@ -81,17 +81,30 @@ link bubbleSort(link h, int step){
         // Inner loop
         p_y = h;
         m = 0;
-        while (y != NULL){ 
+        while (y != NULL){
+            printf("Sorting with step %i\n", step);
             link cy = getNextNode(y, step);
-            Item iy = cy->item;
+            Item iy = 0;
+            if (cy != NULL){
+                iy = cy->item;
+            }
             if (cy != NULL && iy < y->item){
                 // Exchange nodes
                 link p_y = getPrevNode(h, y);
                 link p_cy = getPrevNode(h, cy);
+                link w = y->next;
+
                 p_y->next = cy;
                 y->next = cy->next;
-                p_cy->next = y;
-                cy->next = y->next;
+                if (p_cy != y){
+                    p_cy->next = y;
+                }
+                if (cy != w){
+                    cy->next = w;
+                }
+                else{
+                    cy->next = y;
+                }
                 y = cy;
                 // Set m to notify a movement was done
                 m = 1;
@@ -99,10 +112,28 @@ link bubbleSort(link h, int step){
             else{
                 // Just go through the list accoding the step
                 p_y = y;
-                link w = y;
                 y = getNextNode(y, step);
             }
         }
     }
     return h;
+}
+
+// Shellsort
+// Still figuring out shell sort using bubble sort.
+// This function works ultimately because bubbleSort(x, 1)
+// properly sorts the list, which is not want we're looking for
+link shellsort(link a, int l, int r)
+{
+    int i;
+    int j;
+    int h;
+    link x;
+
+    for (h = 1; h <= (r-l)/9; h = 3*h+1);
+
+    for (h = h ; h > 0; h /= 3){
+        a = bubbleSort(a, h);
+    }
+    return a;
 }

@@ -20,6 +20,10 @@ link sort(link h);
 void destroyList(link h);
 
 // Sorting algorithms
+
+// Use 1 for standard bubble sort
 link bubbleSort(link h, int step);
+
+link shellsort(link a, int l, int r);
 
 #endif // LIST_H
