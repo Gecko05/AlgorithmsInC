@@ -82,13 +82,13 @@ link bubbleSort(link h, int step){
         p_y = h;
         m = 0;
         while (y != NULL){
-            printf("Sorting with step %i\n", step);
             link cy = getNextNode(y, step);
             Item iy = 0;
             if (cy != NULL){
                 iy = cy->item;
             }
             if (cy != NULL && iy < y->item){
+                printf("Sorting with step %i\n", step);
                 // Exchange nodes
                 link p_y = getPrevNode(h, y);
                 link p_cy = getPrevNode(h, cy);
@@ -123,6 +123,9 @@ link bubbleSort(link h, int step){
 // Still figuring out shell sort using bubble sort.
 // This function works ultimately because bubbleSort(x, 1)
 // properly sorts the list, which is not want we're looking for
+// Need to add an inner loop to use the 4 step sort one time for
+// each node on the list, need to figure this out/
+// Maybe should add an offset to bubble sort.
 link shellsort(link a, int l, int r)
 {
     int i;
@@ -134,6 +137,7 @@ link shellsort(link a, int l, int r)
 
     for (h = h ; h > 0; h /= 3){
         a = bubbleSort(a, h);
+        show(a);
     }
     return a;
 }
