@@ -15,19 +15,21 @@ link x;
 link a = &heada;
 link b;
 
-link insertion_list(link h)
+link insertion_list(link a)
 {
     link b = malloc(sizeof(*b));
-    link a = h;
     link t;
     link x;
     link u;
     b->next = NULL;
 
     for (t = a->next; t != NULL; t = u){
-        // Still figuring out why this works instead of t = t->next
+        // Securing the next node in the first list before line 35
         u = t->next;
+        // Iterate on the second list to find the end node
         for (x = b; x->next != NULL; x = x->next){
+            // Break the loop if we found a place
+            // to insert a smaller node than the next
             if (x->next->item > t->item){
                 break;
             }
