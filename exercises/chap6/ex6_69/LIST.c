@@ -68,18 +68,26 @@ link getPrevNode(link s, link x){
 }
 
 // Modified version of bubble sort to use in shellsort
-link bubbleSort(link h, int step){
+link bubbleSort(link h, int step, int start){
     link y;
     link p_y;
     int m = 1;
-
+    link s;
     if (h == NULL || h->next == NULL || h->next->next == NULL){
         return h;
     }
+    s = h;
+    y = h->next;
+    for (int i = 0; i < start; i++){
+        // Beware null pointer exceptions
+        y = y->next;
+        s = s->next;
+    }
     while (m == 1){
-        y = h->next;
+        // The new head is "s"
+        y = s->next;
         // Inner loop
-        p_y = h;
+        p_y = s;
         m = 0;
         while (y != NULL){
             link cy = getNextNode(y, step);
@@ -122,10 +130,7 @@ link bubbleSort(link h, int step){
 // Shellsort
 // Still figuring out shell sort using bubble sort.
 // This function works ultimately because bubbleSort(x, 1)
-// properly sorts the list, which is not want we're looking for
-// Need to add an inner loop to use the 4 step sort one time for
-// each node on the list, need to figure this out/
-// Maybe should add an offset to bubble sort.
+// properly sorts the list, which might not be want we're looking for
 link shellsort(link a, int l, int r)
 {
     int i;
@@ -136,8 +141,11 @@ link shellsort(link a, int l, int r)
     for (h = 1; h <= (r-l)/9; h = 3*h+1);
 
     for (h = h ; h > 0; h /= 3){
-        a = bubbleSort(a, h);
-        show(a);
+        for (int i = 0; i < h; i++){
+            a = bubbleSort(a, h, i);
+            show(a);
+        }
+        
     }
     return a;
 }

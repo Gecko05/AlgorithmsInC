@@ -21,8 +21,8 @@ void destroyList(link h);
 
 // Sorting algorithms
 
-// Use 1 for standard bubble sort
-link bubbleSort(link h, int step);
+// Use step 1 and start 0 for standard bubble sort
+link bubbleSort(link h, int step, int start);
 
 link shellsort(link a, int l, int r);
 
