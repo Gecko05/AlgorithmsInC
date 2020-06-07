@@ -7,6 +7,8 @@
 // Sedgewick states that the partitioning for arrays is not
 // stable, because any key might be moved past a large
 // number of keys equal to it.
+// So maybe in order to make it stable, the order of scanning
+// must be always from left to right?
 
 Item partition(link h, link l, link r)
 {
@@ -15,19 +17,21 @@ Item partition(link h, link l, link r)
     link x = t;
     link px = NULL;
     for (;;){
-        // Look for a big item
+        // Look for a big item left to right
         while (t->item <= r->item && t != r){
+            pt = t;
             t = t->next;
         }
         x = t->next;
-        // Look for a small item
+        // Look for a small item left to right
         while (x->item >= r->item && x != r){
+            px = x;
             x = x->next;
         }
         if (x == r || t == r){
             break;
         }
-
+        
     }
 }
 
