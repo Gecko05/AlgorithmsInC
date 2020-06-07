@@ -1,61 +1,86 @@
-// Stable quicksort for lists: Work in Progress
+// Stable quicksort for lists: Work in Progress, currently a mess
 #include <stdlib.h>
 #include <stdio.h>
 #include "LIST.h"
 #include "Item.h"
 
-// Sedgewick states that the partitioning for arrays is not
-// stable, because any key might be moved past a large
-// number of keys equal to it.
-// So maybe in order to make it stable, the order of scanning
-// must be always from left to right?
-
-Item partition(link h, link l, link r)
-{
-    link t = l;
-    link pt = NULL;
-    link x = t;
-    link px = NULL;
-    for (;;){
-        // Look for a big item left to right
-        while (t->item <= r->item && t != r){
-            pt = t;
-            t = t->next;
-        }
-        x = t->next;
-        // Look for a small item left to right
-        while (x->item >= r->item && x != r){
-            px = x;
-            x = x->next;
-        }
-        if (x == r || t == r){
-            break;
-        }
-        
+int getLinkLen(link h){
+    int c = 0;
+    while (h != NULL){
+        h = h->next;
+        c++;
     }
+    return c;
 }
 
-void quicksort(link h, link l, link r)
+link partition(link h, link *l, link *g)
 {
-    int i;
-    if (r->item <= l->item){
-        return;
+    int vLen = getLinkLen(h);
+    int m = vLen / 2;
+    link y = h;
+    link lm = NULL;
+    link gm = NULL;
+    for (int i = 0; i < m; i++){
+        y = y->next;
     }
-    i = partition(h, l, r);
-    quicksort(h, l, r);
-    quicksort(h, l, r);
+    // Fill the lesser list
+    link x = h;
+    int c = 0;
+    while (x != NULL){
+        if ((x->item < y->item) ||
+            ((x->item == y->item) && c < m)){
+            if (lm == NULL){
+                lm = x;
+                *l = lm; // head for the lesser list
+            }
+            else{
+                lm->next = x;
+                lm = lm->next;
+            }
+        }
+        else if((x->item > y->item) ||
+            ((x->item == y->item) && c > m)){
+            if (gm == NULL){
+                gm = x;
+                *g = gm; // head for the greater list
+            }
+            else{
+                gm->next = x;
+                gm = gm->next;
+            }
+        }
+        x = x->next;
+        c++;
+    }
+    if (lm != NULL){
+        lm->next = NULL;
+    }
+    if (gm != NULL){
+        gm->next = NULL;
+    }
+    return y;
 }
 
-void quicksort(Item a[], int l, int r){
-    int i;
-    if (r <= l){
-        return;
+link quicksort(link h)
+{
+    link lesser;
+    link greater;
+    if (h == NULL || h->next == NULL){
+        return h;
     }
-    i = partition(a, l, r);
-    quicksort(a, l, i-1);
-    quicksort(a, i+1, r);
+    link p = partition(h, &lesser, &greater);
+    lesser = quicksort(lesser);
+    greater = quicksort(greater);
+    if (lesser != NULL){
+        lesser->next = p;
+    }
+    p->next = greater;
+    return lesser;
 }
 
 int main(int argc, char *argv[]){
-
+    link x = malloc(sizeof(*x));
+    link h = init(10);
+    show(h);
+    destroyList(h);
 }
