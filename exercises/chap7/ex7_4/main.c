@@ -83,4 +83,6 @@ int main(int argc, char *argv[]){
     link h = init(10);
     show(h);
     destroyList(h);
+    h = quicksort(h);
+    show(h);
 }
