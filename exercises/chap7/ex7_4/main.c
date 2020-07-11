@@ -97,8 +97,13 @@ link quicksort(link h)
 }
 
 int main(int argc, char *argv[]){
-    link x = malloc(sizeof(*x));
+    //link x = malloc(sizeof(*x));
     link h = init(10);
+    link t = h;
+    for (int i = 0; i < 11; i++){
+        t->item = i;
+        t = t->next;
+    }
     show(h);
     h = quicksort(h);
     show(h);
