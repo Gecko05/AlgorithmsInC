@@ -1,13 +1,14 @@
 CC = gcc
 CFLAGS = -g -Wall
-OBJS = main.o 
+OBJS = main.o DEQUE.o
+DEPS = DEQUE.h Item.h
 
 all: main
 
-main: $(OBJS)
+main: $(OBJS) $(DEPS)
 	$(CC) $(CFLAGS) -o main $(OBJS)
 
-%.o: %.c
+%.o: %.c $(DEPS)
 	$(CC) $(CFLAGS) -c -o $@ $<
 
 clean:
