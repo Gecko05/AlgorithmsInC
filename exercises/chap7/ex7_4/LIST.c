@@ -47,7 +47,6 @@ void destroyList(link h){
 // Return the input link if the list doesn't have more elements ??
 link getNextNode(link x, int step)
 {
-    link t = x;
     for (int i = 0; i < step; i++){
         if (x == NULL){
             return NULL;
@@ -70,7 +69,6 @@ link getPrevNode(link s, link x){
 // Modified version of bubble sort to use in shellsort
 link bubbleSort(link h, int step, int start){
     link y;
-    link p_y;
     int m = 1;
     link s;
     if (h == NULL || h->next == NULL || h->next->next == NULL){
@@ -87,7 +85,7 @@ link bubbleSort(link h, int step, int start){
         // The new head is "s"
         y = s->next;
         // Inner loop
-        p_y = s;
+        //p_y = s;
         m = 0;
         while (y != NULL){
             link cy = getNextNode(y, step);
@@ -119,7 +117,7 @@ link bubbleSort(link h, int step, int start){
             }
             else{
                 // Just go through the list accoding the step
-                p_y = y;
+                //p_y = y;
                 y = getNextNode(y, step);
             }
         }
@@ -133,10 +131,9 @@ link bubbleSort(link h, int step, int start){
 // properly sorts the list, which might not be want we're looking for
 link shellsort(link a, int l, int r)
 {
-    int i;
-    int j;
+    //int i;
+    //int j;
     int h;
-    link x;
 
     for (h = 1; h <= (r-l)/9; h = 3*h+1);
 
