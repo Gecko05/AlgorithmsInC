@@ -10,5 +10,5 @@ main: $(OBJS)
 %.o: %.c
 	$(CC) $(CFLAGS) -c -o $@ $<
 
-clea:
+clean:
 	rm *.o main
