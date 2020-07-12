@@ -5,5 +5,6 @@ This is a repository with programming exercises and examples from the book "Algo
 Exercises are under the *exercises* folder.
 Examples are under the *Programs* folder.
 Some library utilities for trees, queues, and sort methods are under the *Utilities* folder.
+General notes in Markdown format(done in Joplin) for reviewing topics are under the *Notes* folder.
 
 Currently trying to do as many programming exercises as possible, if you have one that is missing in this repository feel free to fork and pull request.
